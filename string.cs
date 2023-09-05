@@ -35,7 +35,9 @@ Console.WriteLine($@"c:\Exercise\{projectName}\ru-RU\data.txt");
 
 string bobby = "Bob";
 int luckyThree = 3;
-decimal threeThrees = 33.3m;
+// decimal threeThrees = 33.3m;
+// float threeThrees = 33.3F;
+double threeThrees = 33.3;
 
 Console.WriteLine($"Hello, {bobby}! You have {luckyThree} in your inbox. The temperature is {threeThrees} celcius");
 

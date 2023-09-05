@@ -32,3 +32,10 @@ Console.WriteLine($@"c:\Exercise\{projectName}\data.txt");
 // russian output: 
 Console.WriteLine($"\n{russianMessage}");
 Console.WriteLine($@"c:\Exercise\{projectName}\ru-RU\data.txt");
+
+string bobby = "Bob";
+int luckyThree = 3;
+decimal threeThrees = 33.3m;
+
+Console.WriteLine($"Hello, {bobby}! You have {luckyThree} in your inbox. The temperature is {threeThrees} celcius");
+

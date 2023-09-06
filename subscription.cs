@@ -8,11 +8,20 @@ class Program {
     static int daysUntilExpired = random.Next(12); 
     static int discountPercentage = 0;
 
-    static string lessThanTenMsg = "Your subscription will expire soon! Renew Now!";
-    static string lessThanFiveMsg = $"Your subscription expires in {daysUntilExpired} days Renew now and save 10%!";
-    static string oneMoreDayMsg = "Your subscription expires within a Day! Renew now and save 20%!";
+    // without renew message to allow ternary declared string to determine that message.
+    static string lessThanTenMsg = "Your subscription will expire soon!";
+    static string lessThanFiveMsg = $"Your subscription expires in {daysUntilExpired} days.";
+    static string oneMoreDayMsg = "Your subscription expires within a Day!";
+    // static string lessThanTenMsg = "Your subscription will expire soon! Renew Now!";
+    // static string lessThanFiveMsg = $"Your subscription expires in {daysUntilExpired} days Renew now and save 10%!";
+    // static string oneMoreDayMsg = "Your subscription expires within a Day! Renew now and save 20%!";
 
     static string expiredMsg = "Your subscription has expired!";
+
+    static string renewalMsg = 
+    (daysUntilExpired > 1 && daysUntilExpired <=5) ? "Renew Now!" : 
+    (daysUntilExpired == 1) ? "Renew now and Save 20%!" :
+    "Your subscription has ended!";
 
     // string lessThanFiveMsg = "Your subscription expires in  days" Renew now and save 10%!"
 
@@ -28,7 +37,9 @@ class Program {
         } else if (daysUntilExpired == 0) {
             return expiredMsg;
         } else {
-          return "else";        
+            return "else";
+        }
+        
     }
 
     static void Main() 
@@ -36,7 +47,7 @@ class Program {
         string msg = checkExpired();
         Console.WriteLine(discountPercentage);
         Console.WriteLine($"daysUntilExpired: {daysUntilExpired}");
-        Console.WriteLine($"Msg: {msg}");
+        Console.WriteLine($"Msg: {msg} Renew: {renewalMsg}");
     }
 
 

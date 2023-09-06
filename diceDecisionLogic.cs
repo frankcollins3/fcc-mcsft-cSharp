@@ -42,14 +42,20 @@ class Program
         int triples = checkTripleBonus();
         int gameCheck = doubles + triples + roll1 + roll2 + roll3;
 
-        if (gameCheck >= 15)
-        {
-            Console.WriteLine($"You Win! roll1: {roll1} roll2: {roll2} roll3: {roll3} ----> doubles: {doubles} triples: {triples}");
-        }
-        else
-        {
-            Console.WriteLine($"You Lose! roll1: {roll1} roll2: {roll2} roll3: {roll3} ----> doubles: {doubles} triples: {triples}");
-        }
+        // if (gameCheck >= 15)
+        // {
+        //     Console.WriteLine($"You Win! roll1: {roll1} roll2: {roll2} roll3: {roll3} ----> doubles: {doubles} triples: {triples}");
+        // }
+        // else
+        // {
+        //     Console.WriteLine($"You Lose! roll1: {roll1} roll2: {roll2} roll3: {roll3} ----> doubles: {doubles} triples: {triples}");
+        // }
+
+        string gameOver = (gameCheck >= 15) ? "You win!" : "You Lose! ";
+        string gamePlay = $"roll1:{roll1}, roll2:{roll2}, roll3:{roll3}, doubles:{doubles}, triples:{triples}";
+
+        Console.WriteLine($"{gameOver}: {gamePlay}");
+            // Console.WriteLine($"You Lose! roll1: {roll1} roll2: {roll2} roll3: {roll3} ----> doubles: {doubles} triples: {triples}");
 
         // The return statement should be the last statement in the method
         return gameCheck;

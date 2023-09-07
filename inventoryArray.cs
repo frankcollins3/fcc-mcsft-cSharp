@@ -47,15 +47,30 @@ class Program
         // loopAndPush();
         // getSum();
 
-        string[] inventory = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
+        // string[] inventory = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
         
-        foreach(string i in inventory)
-        {
-            if (i.StartsWith("B")) {
-                Console.WriteLine($"Starts with B: {i}");
-            }
-        }
+        // foreach(string i in inventory)
+        // {
+        //     if (i.StartsWith("B")) {
+        //         Console.WriteLine($"Starts with B: {i}");
+        //     }
+        // }
 
+        
+        string str = "the overweight frog hopped over the bog";
+        // turns the string into:           ['t', 'h', 'e', 'o', 'v', 'e', 'r', {...rest_of_str} ];
+        char[] charMsg = str.ToCharArray();
+        // reverse the message.
+        Array.Reverse(charMsg);
+        int x = 0;
+
+        // loop and increment x by 1 everytime the letter o is encountered during iteration.
+        foreach(char i in charMsg) { if (i == 'o') { x++; } }
+
+        // reassign reversed string 
+        string new_message = new string(charMsg);
+        Console.WriteLine(new_message);
+        Console.WriteLine($"o appears: \t {x} times! ");
 
     }
 }

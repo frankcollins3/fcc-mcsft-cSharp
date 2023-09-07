@@ -26,25 +26,35 @@ class Program
         //     Console.WriteLine($"ghost pokemon: {poke}");
         // }
 
-        int[] inventory = { 200, 400, 750, 175, 250 };
-        int sum = 0; 
+                // simple array 
+        // int[] inventory = { 200, 400, 750, 175, 250 };
+        // int sum = 0; 
 
-        void loopAndPush() 
+        // void loopAndPush() 
+        // {
+        //     foreach (int items in inventory) 
+        //     {
+        //         Console.WriteLine($"item: {items}");
+        //         sum += items;
+        //     }
+        // }
+
+        // void getSum()
+        // {
+        //     Console.WriteLine($"nice weve got some {sum} items");
+        // }
+
+        // loopAndPush();
+        // getSum();
+
+        string[] inventory = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
+        
+        foreach(string i in inventory)
         {
-            foreach (int items in inventory) 
-            {
-                Console.WriteLine($"item: {items}");
-                sum += items;
+            if (i.StartsWith("B")) {
+                Console.WriteLine($"Starts with B: {i}");
             }
         }
-
-        void getSum()
-        {
-            Console.WriteLine($"nice weve got some {sum} items");
-        }
-
-        loopAndPush();
-        getSum();
 
 
     }

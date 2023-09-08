@@ -3,6 +3,11 @@
 // The code executes at least one time, then the Boolean expression next to the while keyword is evaluated. 
 // If the Boolean expression returns true, the code block is executed again.
 
+// * * * The for statement: executes its body while a specified Boolean expression evaluates to true.
+// * * * The foreach statement: enumerates the elements of a collection and executes its body for each element of the collection.
+// * * * The do-while statement: conditionally executes its body one or more times.
+// * * * The while statement: conditionally executes its body zero or more times.
+
     Random randomVal = new Random();
     int current = 0; 
     int niner = 9;

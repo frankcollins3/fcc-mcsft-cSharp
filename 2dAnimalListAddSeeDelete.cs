@@ -1,6 +1,3 @@
-// this is basically the ${company} take home assignment for C but without structs and linked lists.
-// recursively show_list(), addToList(), deleteFromList(), based on *pointer being y (n or any other character invalidates while block and ends the program);
-
 using System;
 
 class Program {
@@ -27,10 +24,79 @@ class Program {
         {
             if (trait != null) {
             Console.WriteLine(trait);
+            } else {
+                // return;
+                Console.WriteLine("\t");
             }
         }
     }
     }
+
+    int getOurAnimalsLength()
+    {   
+        int totalPets = 0;
+        foreach(string[] pets in ourAnimals)
+        {
+            if (pets != null) totalPets++;
+        }
+        return totalPets;
+    }
+
+    int ourAnimalsIndex = 0;
+
+    void addPets()
+    {
+        // ourAnimals.Length + 1
+
+        // Console.WriteLine("test");
+        startover:
+        string? species;
+        string? age;
+        string? features;
+        string? personality;
+        string? nickname;
+
+        string? restart;
+        Console.WriteLine("Please Enter cat or what kind of dog you have");
+        species = Console.ReadLine();
+        Console.WriteLine("How old is your pet?");
+        age = Console.ReadLine();
+
+        Console.WriteLine("What are the physical features of your pet?");
+        features = Console.ReadLine();
+
+        Console.WriteLine("Whats your pet's personality?");
+        personality = Console.ReadLine();
+
+        Console.WriteLine("What's your pet's name?");
+        nickname = Console.ReadLine();
+
+        Console.WriteLine($"{species} \t {age} \t {features} \t {personality} \t {nickname}");
+
+        int totalPets = getOurAnimalsLength();
+
+        Console.WriteLine($"totalPets: {totalPets}");
+
+        ourAnimals[3] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
+        // ourAnimals[totalPets] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
+        
+        // ourAnimals[ourAnimalsIndex] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
+
+        // iterate index for next pet.
+        ourAnimalsIndex++;
+        // ourAnimals[ourAnimals.length - 1] = new string[] {ourAnimals.length, species, age, features, personality, nickname};
+
+        // Console.WriteLine("Is this correct? No to restart. Yes or any other character to add pet to our happy place!");
+
+        // restart = Console.ReadLine();
+
+        // if (restart == 'no') { 
+        //     goto startover;
+        // } else {
+        // }
+    }
+
+
 
     void evaluateInput(string input)
     {
@@ -40,9 +106,9 @@ class Program {
                 showPets();
                 break;
 
-            // case "add"
-            // addPets();
-            // break:
+            case "add":
+                addPets();
+                break;
         }
     }
     
@@ -52,9 +118,11 @@ class Program {
 
     while(loop)
     {   
+        Console.Write("\n \n");
         loopRestart:
         Console.WriteLine("Welcome to Well Vetted! How can we Help You? Enter into the input:");
         Console.Write("'see': \t show animals \n");
+        Console.Write("'add': \t add your pet to our home \n");
 
         animalActions = Console.ReadLine();
         Console.WriteLine($"human entered: \t {animalActions}");
@@ -67,6 +135,4 @@ class Program {
     // A description of the pet's personality.          // The pet's nickname.
 
     }
-   
-
 }

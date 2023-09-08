@@ -4,14 +4,14 @@ class Program {
     static void Main()
     {
 
-    // restart:
-    Console.WriteLine("Please type your job title into the input: \t Administrator \t Manger \t User");
+    restart:
+    Console.WriteLine("Please type your job title into the input: \t admin \t manager \t user");
     // Console.WriteLine("Please Enter:" + "\t" "Administrator" + "\t" + "Manager" + "\t" + "User");
     string? inputJobTitle;
     // gather input to check if we will be looping or accepting the input.
         inputJobTitle = Console.ReadLine();
         Console.WriteLine($"human entered: \t {inputJobTitle}");
-    while (inputJobTitle != "" && inputJobTitle != "Administrator" && inputJobTitle != "Manager" && inputJobTitle != "User") 
+    while (inputJobTitle.Trim().ToLower() != "" && inputJobTitle.Trim().ToLower() != "admin" && inputJobTitle.Trim().ToLower() != "manager" && inputJobTitle.Trim().ToLower() != "user") 
     {        
         inputJobTitle = Console.ReadLine();
         Console.WriteLine($"in the loop. entered: \t {inputJobTitle}");
@@ -20,11 +20,15 @@ class Program {
     }
 
     Console.WriteLine($"Job Title: \t {inputJobTitle}");
-    char restartString;
-    Console.WriteLine("Enter y to restart to beginning or any other character to exit");
+    string restartString;
+    Console.WriteLine("Enter yes to restart to beginning or any other character to exit");
     restartString = Console.ReadLine();
-    Console.WriteLine($"Does the user want to rre")
-    
+    Console.WriteLine($"Does the user want to restart? {restartString}");
+    if (restartString == "yes") {
+        goto restart;
+    } else {
+        Console.WriteLine("Bye! thx for playing!");
+    }
 }
 
 }

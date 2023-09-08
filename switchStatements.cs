@@ -26,36 +26,84 @@ class Program {
     //     break;
     // }
 
-    Random level = new Random();
-    int randomLevel = level.Next(0, 4);
-    Console.WriteLine($"randomLevel: \t {randomLevel}");
+    // Random level = new Random();
+    // int randomLevel = level.Next(0, 4);
+    // Console.WriteLine($"randomLevel: \t {randomLevel}");
 
-    string title = "";
+    // string title = "";
 
-    switch(randomLevel)
-    {
-        case 1:
-        title = "Junior Associate";
-        break;
+    // switch(randomLevel)
+    // {
+    //     case 1:
+    //     title = "Junior Associate";
+    //     break;
 
-        case 2:
-        title = "Senior Associate";
-        break;
+    //     case 2:
+    //     title = "Senior Associate";
+    //     break;
 
-        case 3:
-        title = "Manager";
-        break;
+    //     case 3:
+    //     title = "Manager";
+    //     break;
 
-        case 4: 
-        title = "Senior Manager";
-        break;
+    //     case 4: 
+    //     title = "Senior Manager";
+    //     break;
 
-        default:
-        title = "Waterboy";
-        break;
-    }
+    //     default:
+    //     title = "Waterboy";
+    //     break;
+    // }
 
-    Console.WriteLine($"Not another person being promoted to {title}!!");
+    // Console.WriteLine($"Not another person being promoted to {title}!!");
+
+        string sku = "02-WH-S";
+// splitting the sku string which types it as an array of strings separated by dashes in this cas.e
+string[] product = sku.Split('-');
+
+string type = "";
+string color = "";
+string size = "";
+
+switch(product[0]) 
+{
+    case "01":
+    type = "Sweat Shirt";
+    break;
+    case "02":
+    type = "T-Shirt";
+    break;
+    case "03":
+    type = "Sweat Pants";
+    break;
+}
+
+switch(product[1])
+{
+    case "BL":
+    color = "Black";
+    break;
+    case "MN":
+    color = "Maroon";
+    break;
+    case "WH":
+    color = "White";
+    break;
+}
+
+switch(product[2])
+{
+    case "S":
+    size = "Small";
+    break;
+    case "M":
+    size = "Medium";
+    break;
+    case "L":
+    size = "Large";
+    break;
+}
+    Console.WriteLine($"Guys here's our new product: \t {type} {color} {size}");
 
     }
 }

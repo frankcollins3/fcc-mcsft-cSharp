@@ -19,15 +19,21 @@ class Program {
     {
     foreach(string[] animals in ourAnimals)
     {
+        if (animals != null) 
+        {
         Console.WriteLine("heres a pet:");
         foreach(string trait in animals) 
+            
         {
-            if (trait != null) {
+            if (trait != null) 
+            {
             Console.WriteLine(trait);
-            } else {
+            } else 
+            {
                 // return;
                 Console.WriteLine("\t");
             }
+        }
         }
     }
     }
@@ -45,10 +51,7 @@ class Program {
     int ourAnimalsIndex = 0;
 
     void addPets()
-    {
-        // ourAnimals.Length + 1
-
-        // Console.WriteLine("test");
+    {        
         startover:
         string? species;
         string? age;
@@ -77,23 +80,53 @@ class Program {
 
         Console.WriteLine($"totalPets: {totalPets}");
 
-        ourAnimals[3] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
-        // ourAnimals[totalPets] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
-        
-        // ourAnimals[ourAnimalsIndex] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};
+        ourAnimals[3] = new string[] {ourAnimals.Length.ToString(), species, age, features, personality, nickname};        
+        ourAnimalsIndex++;        
+    }
 
-        // iterate index for next pet.
-        ourAnimalsIndex++;
-        // ourAnimals[ourAnimals.length - 1] = new string[] {ourAnimals.length, species, age, features, personality, nickname};
+    void deletePet()    
+    {
+    string? nameOfPet;
+    Console.WriteLine("Whats the name of the pet you want to delete?");
+    nameOfPet = Console.ReadLine();
 
-        // Console.WriteLine("Is this correct? No to restart. Yes or any other character to add pet to our happy place!");
+        for (int i = 0; i < ourAnimals.Length; i++) {
+                   if (ourAnimals[i] != null && ourAnimals[i].Length > 5 && ourAnimals[i][5] == nameOfPet)
+        {
+            Console.WriteLine($"name: \t {nameOfPet}");
+            ourAnimals[i] = null;
+            // Possibly delete every endpoint besides name to mention the pet that was there.
+            // In a full app, you could also keep the date it was deleted and no longer provide the name after a certain period.
+        }
+    }
+    }
 
-        // restart = Console.ReadLine();
-
-        // if (restart == 'no') { 
-        //     goto startover;
-        // } else {
-        // }
+// In this updated version, before checking if ourAnimals[i][5] is equal to nameOfPet, it first checks if ourAnimals[i] is not null and whether it has at least 6 elements (to ensure there's an element at index 5). This should prevent the NullReferenceException from occurring when you attempt to access elements that may be null.
+    void editPet() 
+    {
+        // age, personality description.
+        string? nickname;
+        Console.WriteLine("what is the name of the pet we will be updating?");
+        nickname = Console.ReadLine();
+        string? endpoint;
+        Console.WriteLine("will you be editing: \t 'age' ? 'personality'?");
+        endpoint = Console.ReadLine();
+        string? updateText;
+        Console.Write($"Welcome! Looks like You'll be editing {nickname}s \t {endpoint}. what will the new info be? \n");
+        updateText = Console.ReadLine();
+        for (int i = 0; i < ourAnimals.Length; i++) {
+            if (ourAnimals[i] != null && ourAnimals[i].Length > 5) 
+            {                
+            if (ourAnimals[i][5] == nickname) {
+                string[] editPet = ourAnimals[i];
+                if (endpoint == "age") {
+                    editPet[2] = updateText;
+                } else if (endpoint == "personality") {
+                    editPet[4] = updateText;
+                }
+            }
+            }
+        }
     }
 
 
@@ -109,6 +142,14 @@ class Program {
             case "add":
                 addPets();
                 break;
+
+            case "delete":
+                deletePet();
+                break;
+            
+            case "edit":
+                editPet();
+                break;
         }
     }
     
@@ -123,6 +164,8 @@ class Program {
         Console.WriteLine("Welcome to Well Vetted! How can we Help You? Enter into the input:");
         Console.Write("'see': \t show animals \n");
         Console.Write("'add': \t add your pet to our home \n");
+        Console.Write("'delete': \t give a pet a new home \n");
+        Console.Write("'edit': \t update a pet's info \n");
 
         animalActions = Console.ReadLine();
         Console.WriteLine($"human entered: \t {animalActions}");

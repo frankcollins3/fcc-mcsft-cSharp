@@ -1,0 +1,72 @@
+using System;
+
+class Program {
+
+    // this app will feature callback functions that allow the user to decide which features of the app they will access based on input.
+    
+    // global variables so the callbacks have access to them.
+
+
+    static void Main()
+    {
+
+
+                        // * * * sort and reverse * * *
+    // string[] pallets = { "B14", "A11", "B12", "A13" };
+
+    // Console.WriteLine("Sorted...");
+    // Array.Sort(pallets);
+    // foreach (var pallet in pallets)
+    // {
+    //     Console.WriteLine($"-- {pallet}");
+    // }
+
+    // Console.WriteLine("");
+    // Console.WriteLine("Reversed...");
+    // Array.Reverse(pallets);
+    // foreach (var pallet in pallets)
+    // {
+    //     Console.WriteLine($"-- {pallet}");
+    // }
+                    // * * * sort and reverse * * *
+
+    //  Array.clear() behaves like str.slice() (if you use both args of slice) it describes the start index and the end index.
+    string[] pallets = { "B14", "A11", "B12", "A13" };
+
+    void showPallets() { foreach(string p in pallets) { Console.Write($"check: \t {p} \n "); } }
+
+    Array.Clear(pallets, 0, pallets.Length -1);
+    // Array.Clear(pallets, 0, 2);
+    Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");    
+
+    Console.WriteLine("first showpallets");
+    showPallets();
+
+    Array.Resize(ref pallets, 7);
+    Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+
+    pallets[4] = "C01";
+    pallets[5] = "C02";
+    pallets[6] = "C40";
+
+    Console.WriteLine("second showpallets");
+    showPallets();
+
+    Array.Resize(ref pallets, 4);
+    Console.WriteLine($"Resizing 3 ... count: \t {pallets.Length}");
+
+    showPallets();
+
+    }
+}
+
+// Can you remove null elements from an array?
+// If the Array.Resize() method doesn't remove empty elements from an array, is there another helper method that will do the job automatically? 
+// No. The best way to empty elements from an array would be to count the number of non-null elements by iterating through each item and increment a variable (a counter). 
+// Next, you would create a second array that is the size of the counter variable. Finally, you would loop through each element in the original array and copy non-null values into the new array.
+
+
+// Recap
+// Use the Clear() method to empty the values out of elements in the array.
+// Use the Resize() method to change the number of elements in the array, removing or adding elements from the end of the array.
+// New array elements and cleared elements are null, meaning they don't point to a value in memory.

@@ -129,6 +129,29 @@ class Program {
         }
     }
 
+    void enforceAgeAndPersonality()
+    {
+            Console.Write("running enforce function \n");
+        for(int i = 0; i < ourAnimals.Length; i++) {
+            if (ourAnimals[i] != null) {
+            // if (ourAnimals[i] != null && ourAnimals[i].Length > 5) {
+
+// ourAnimals[2] = new string[] {"3", "cat", "5", "standard housecat", "fun. snugglesome. careful: loves headphones / wires", "mystic"};
+                string[] petIndex = ourAnimals[i];
+                if (petIndex[2] == null || petIndex[2].Length < 1) {
+                    Console.WriteLine($"We need to update: \t {petIndex[5]}s Age. Please update the age:");
+                    string? ageUpdate;
+                    ageUpdate = Console.ReadLine();
+                }
+                if (petIndex[4] == null || petIndex[4].Length < 4) {
+                    Console.WriteLine($"We need to update: \t {petIndex[5]}s Personality. Please update the Personality:");
+                    string? personalityUpdate;
+                    personalityUpdate = Console.ReadLine();
+                }
+            }
+        }
+    }
+
 
 
     void evaluateInput(string input)
@@ -151,6 +174,7 @@ class Program {
                 editPet();
                 break;
         }
+        enforceAgeAndPersonality();
     }
     
     // programRestart:
@@ -171,6 +195,7 @@ class Program {
         Console.WriteLine($"human entered: \t {animalActions}");
         // Console.Write("'see': \t show animals \n");
         evaluateInput(animalActions);
+        // enforceAgeAndPersonality();
 
 
     }

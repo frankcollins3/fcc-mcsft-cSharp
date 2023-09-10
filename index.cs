@@ -1,9 +1,68 @@
-    using System;
+    // using System;
 
     class Program {
 
         static void Main()
         {
+
+        // string data = "12345John Smith          5000  3  ";
+        // 123455000  3 (starts at [5] = "J" && deletes 20 characters starting at "J" which .Removes() 20 characters, which is John Smith and most of the white space.)
+        
+        // string updatedData = data.Remove(5, 20);
+        // Console.WriteLine(updatedData);
+
+        // string data = "goodguy";
+        // string updatedData = data.Remove(1, 3);
+        // Console.WriteLine(updatedData);    
+        // gguy (removes [1] = "o" && 3 total digits "ood" returning string characters: "gguy");
+
+        // string message = "This--is--ex-amp-le--da-ta";
+        // message = message.Replace("--", " ");
+        // message = message.Replace("-", "");
+        // Console.WriteLine(message);
+
+        // string message2 = "This is crazy!!!!****!!!*";
+        // message2 = message2.Replace("*", "!");           <!-- this takes the * asterisk and turns them into exclamation points! -->
+        // message2 = message2.Replace("!", " ");             // this does not replace every asterisk and every exclamation mark -->
+        // message2 = message2.Replace("*", " ");             
+        // Console.WriteLine(message2);
+
+        string quantity = "";
+        const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+
+        void stringMutation()
+        {
+        int openingDivLessThan = input.IndexOf("<");
+        int openingDivGreaterThan = input.IndexOf(">");            
+        
+        openingDivGreaterThan += 1;
+        quantity = input.Remove(openingDivLessThan, openingDivGreaterThan);
+        
+        int closingDivLessThan = quantity.LastIndexOf("<");
+        int closingDivGreaterThan = quantity.LastIndexOf(">");
+        int length = closingDivGreaterThan - closingDivLessThan;
+        length += 1;
+
+        Console.WriteLine($"closingDivLessThan {closingDivLessThan}");
+        Console.WriteLine($"quantity after first remove: {quantity}");
+        quantity = quantity.Remove(closingDivLessThan, length);        
+        // quantity = quantity.Remove(41, 6);      (41, 47) doesn't work. Need to get the length between the (removeStringEnd - removeStringStart) and then + 1 since index doesn't exclude char.
+        quantity = quantity.Replace("&trade", "&reg");
+        }
+                
+        stringMutation();
+        Console.WriteLine(quantity);
+        
+        }
+    }
+
+
+// using System;
+
+//     class Program {
+
+//         static void Main()
+//         {
 
         // In this exercise, you use the IndexOf() method to locate the position of one or more characters string inside a larger string.
         // You use the Substring() method to return the part of the larger string that follows the character positions you specify.
@@ -125,18 +184,18 @@ while (true)
     // Now  find the matching closing symbol
     char matchingSymbol = ' ';
 
-    switch (currentSymbol)
-    {
-        case "[":
-            matchingSymbol = ']';
-            break;
-        case "{":
-            matchingSymbol = '}';
-            break;
-        case "(":
-            matchingSymbol = ')';
-            break;
-    }
+    // switch (currentSymbol)
+    // {
+    //     case "[":
+    //         matchingSymbol = ']';
+    //         break;
+    //     case "{":
+    //         matchingSymbol = '}';
+    //         break;
+    //     case "(":
+    //         matchingSymbol = ')';
+    //         break;
+    // }
 
     // To find the closingPosition, use an overload of the IndexOf method to specify 
     // that the search for the matchingSymbol should start at the openingPosition in the string. 
@@ -148,11 +207,11 @@ while (true)
 
     int length = closingPosition - openingPosition;
     Console.WriteLine(message.Substring(openingPosition, length));
-}
+// }
 
         // different symbols with closing position
     
 
         // you search for several different symbols, not just a set of parentheses.
-        }
-    }
+    //     }
+    // }

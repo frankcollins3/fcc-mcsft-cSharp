@@ -4,7 +4,7 @@
 
         static void Main()
         {
-            
+restart:     
             // #1 the ourAnimals array will store the following: 
 string animalSpecies = "";
 string animalID = "";
@@ -108,9 +108,7 @@ for (int i = 0; i < maxPets; i++)
 
 void searchDogs()
 {
-    // check whether this is a personality | physical features 
-    // [4] physical
-    // [5] personality.
+    // check whether this is a personality | physical features  // [4] physical // [5] personality.
     searchAgain:
     string? physicalOrPersonality;
     string? searchTerm;
@@ -131,12 +129,6 @@ void searchTraits(string endpoint, string trait)
 
         for (int i = 0; i < maxPets; i++)
 {
-    // for (int j = 0; j < 7; j++) 
-    // {
-    //     Console.WriteLine(ourAnimals[i, j]);
-    // }
-
-//  physical description.
     if (endpoint == "physical") 
     {
     // Console.WriteLine(ourAnimals[i, 4]);
@@ -144,36 +136,33 @@ void searchTraits(string endpoint, string trait)
     string physicalTraits = ourAnimals[i, 4];
     // Console.WriteLine($"physicalTraits: \t {physicalTraits}");
 
-if (physicalTraits.Contains(trait)) {
-    Console.WriteLine($"found the traits: {physicalTraits}");
-} else {
-    Console.WriteLine()
+    if (physicalTraits.Contains(trait)) 
+{
+    Console.WriteLine($"physical traits for {ourAnimals[i, 3]}: {physicalTraits}");
+    // Console.WriteLine($"found the traits: {physicalTraits}");
+}    else 
+{
+        Console.WriteLine("no search results found in physical traits");
 }
-
-
-
     }
-
-// personality descriptions.
     if (endpoint == "personality") 
     {
-    Console.WriteLine(ourAnimals[i, 5]);
+    string personalityTraits = ourAnimals[i, 5];
+        if (personalityTraits.Contains(trait)) 
+    {
+        Console.WriteLine($"personality traits for {ourAnimals[i, 3]}: {personalityTraits}");
+        // Console.WriteLine($"found the traits: {personalityTraits}");
+    } 
+    else 
+    {
+        Console.WriteLine("no search results found in personality traits");        
+    }
     }
 
     Console.WriteLine();
 }
-
 }
 
-
-//     for (int i = 0; i < maxPets; i++)
-// {
-//     for (int j = 0; j < 7; j++) 
-//     {
-//         Console.WriteLine(ourAnimals[i, j]);
-//     }
-//     Console.WriteLine();
-// }
 
         if (physicalOrPersonality.Trim().ToLower() == "physical") 
     {
@@ -194,6 +183,19 @@ if (physicalTraits.Contains(trait)) {
     }
 
 }
+
+// was going to be a callback function that took the user back to different parts of the app but some of these goto functions are within other func() scope. esp: 'searchTraits' 'searchDogs'
+// void goToFunc(string gotoBlock)
+// {
+//         string? gotosearch;
+
+//     if (gotoBlock == "searchDogsSearchAgain") 
+//     {
+//         Console.WriteLine($"Do you want to search: 'dogs', 'searchTerm', 'restart' again?")
+//         gotosearch = Console.ReadLine();
+//         gotosearch == "dogs" ? goto 
+//     }
+// }
 
 
 // #5 display the top-level menu options

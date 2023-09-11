@@ -127,8 +127,15 @@ void searchTraits(string endpoint, string trait)
     Console.WriteLine($"searchTraits: \t {endpoint}");
     Console.WriteLine($"searchTraits: \t {trait}");
 
+    
         for (int i = 0; i < maxPets; i++)
 {
+
+    Console.WriteLine(ourAnimals[i, 1]);
+        if (ourAnimals[i, 1].Contains("dog")) 
+    {
+        // Console.WriteLine($"dog: \t {ourAnimals[i, 1]}");        
+
     if (endpoint == "physical") 
     {
     // Console.WriteLine(ourAnimals[i, 4]);
@@ -159,6 +166,7 @@ void searchTraits(string endpoint, string trait)
     }
     }
 
+    }   //  if (ourAnimals[i, 1] == "dog") 
     Console.WriteLine();
 }
 }

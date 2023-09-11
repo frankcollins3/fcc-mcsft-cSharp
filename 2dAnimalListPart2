@@ -109,15 +109,15 @@ for (int i = 0; i < maxPets; i++)
 void searchDogs()
 {
     // check whether this is a personality | physical features  // [4] physical // [5] personality.
-    searchAgain:
     string? physicalOrPersonality;
     string? searchTerm;
+    string? singleOrMulti;
     Console.WriteLine("search for characteristics:");
-    Console.WriteLine("Enter 'physical' or 'personality' to enter search keywords");
+    Console.WriteLine("Enter 'physical' or 'personality' to search dogs by their physical features or personality traits");
+
     physicalOrPersonality = Console.ReadLine();
 
-    Console.WriteLine($"search through: \t {physicalOrPersonality} for a searchTerm:");
-    searchTermAgain:
+    Console.WriteLine("For single searches: just enter 1 word. To search multiple-keywords: separate them by comma");
     searchTerm = Console.ReadLine();
 
 
@@ -132,6 +132,7 @@ void searchTraits(string endpoint, string trait)
 {
 
     Console.WriteLine(ourAnimals[i, 1]);
+    // keep from reaching the:          if (endpoint == "physical") && if (endpoint == "personality") blocks of code during iteration
         if (ourAnimals[i, 1].Contains("dog")) 
     {
         // Console.WriteLine($"dog: \t {ourAnimals[i, 1]}");        
@@ -171,26 +172,61 @@ void searchTraits(string endpoint, string trait)
 }
 }
 
-
         if (physicalOrPersonality.Trim().ToLower() == "physical") 
     {
         Console.WriteLine("physical");
+            if (searchTerm.Contains(",")) 
+        {
+        string[] items = searchTerm.Split(",");
+        foreach(string item in items)
+        {
+            searchTraits(physicalOrPersonality, item);
+        }
+        } 
+            else 
+        {
         searchTraits(physicalOrPersonality, searchTerm);
+        
+        }
     } 
         else if (physicalOrPersonality.Trim().ToLower() == "personality") 
     {
         Console.WriteLine("personality");
+            if (searchTerm.Contains(",")) 
+        {
+        string[] items = searchTerm.Split(",");
+        foreach(string item in items)
+        {
+            searchTraits(physicalOrPersonality, item);
+        }
+        }
+            else 
+        {
         searchTraits(physicalOrPersonality, searchTerm);
+            
+        }
     } 
         else 
     {
         // Console.WriteLine();
         Console.Clear();
         // Console.WriteLine("\t search again for characteristics. 'physical' or 'personality'");
-        goto searchAgain;
     }
 
 }
+
+        // searchDogsMulti
+// void searchDogsMulti()
+// {
+//     Console.WriteLine("searching dogs for multiple keywords. separate keywords by commas:");
+//     string? searchInput;
+//     searchInput = Console.ReadLine();    
+//     string[] items = searchInput.Split(",");
+//     foreach(string item in items)
+//     {
+//         Console.Write($"{item} \n ");
+//     }
+// }
 
 // was going to be a callback function that took the user back to different parts of the app but some of these goto functions are within other func() scope. esp: 'searchTraits' 'searchDogs'
 // void goToFunc(string gotoBlock)
@@ -247,9 +283,11 @@ do
 
         case "2":
             // Display all dogs with a specified characteristic
-            Console.WriteLine("\nUNDER CONSTRUCTION - please check back next month to see progress.");
             Console.WriteLine("Press the Enter key to continue.");
+            // singleOrMulti = Console.ReadLine();
+                
             searchDogs();            
+            
             readResult = Console.ReadLine();
             break;
 

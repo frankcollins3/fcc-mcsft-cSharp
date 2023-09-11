@@ -15,13 +15,16 @@ string animalNickname = "";
 string suggestedDonation = "";
 
 // #2 variables that support data entry
-int maxPets = 8;
+int maxPets = 7;
+// int maxPets = 8;
 string? readResult;
 string menuSelection = "";
 decimal decimalDonation = 0.00m;
 
 // #3 array used to store runtime data, there is no persisted data
 string[,] ourAnimals = new string[maxPets, 7];
+
+
 
 // #4 create sample data ourAnimals array entries
 for (int i = 0; i < maxPets; i++)
@@ -110,14 +113,80 @@ void searchDogs()
     // [5] personality.
     searchAgain:
     string? physicalOrPersonality;
+    string? searchTerm;
     Console.WriteLine("search for characteristics:");
     Console.WriteLine("Enter 'physical' or 'personality' to enter search keywords");
     physicalOrPersonality = Console.ReadLine();
-    if (physicalOrPersonality.Trim().ToLower() == "physical") {
+
+    Console.WriteLine($"search through: \t {physicalOrPersonality} for a searchTerm:");
+    searchTermAgain:
+    searchTerm = Console.ReadLine();
+
+
+void searchTraits(string endpoint, string trait)
+{
+    
+    Console.WriteLine($"searchTraits: \t {endpoint}");
+    Console.WriteLine($"searchTraits: \t {trait}");
+
+        for (int i = 0; i < maxPets; i++)
+{
+    // for (int j = 0; j < 7; j++) 
+    // {
+    //     Console.WriteLine(ourAnimals[i, j]);
+    // }
+
+//  physical description.
+    if (endpoint == "physical") 
+    {
+    // Console.WriteLine(ourAnimals[i, 4]);
+
+    string physicalTraits = ourAnimals[i, 4];
+    // Console.WriteLine($"physicalTraits: \t {physicalTraits}");
+
+if (physicalTraits.Contains(trait)) {
+    Console.WriteLine($"found the traits: {physicalTraits}");
+} else {
+    Console.WriteLine()
+}
+
+
+
+    }
+
+// personality descriptions.
+    if (endpoint == "personality") 
+    {
+    Console.WriteLine(ourAnimals[i, 5]);
+    }
+
+    Console.WriteLine();
+}
+
+}
+
+
+//     for (int i = 0; i < maxPets; i++)
+// {
+//     for (int j = 0; j < 7; j++) 
+//     {
+//         Console.WriteLine(ourAnimals[i, j]);
+//     }
+//     Console.WriteLine();
+// }
+
+        if (physicalOrPersonality.Trim().ToLower() == "physical") 
+    {
         Console.WriteLine("physical");
-    } else if (physicalOrPersonality.Trim().ToLower() == "personality") {
+        searchTraits(physicalOrPersonality, searchTerm);
+    } 
+        else if (physicalOrPersonality.Trim().ToLower() == "personality") 
+    {
         Console.WriteLine("personality");
-    } else {
+        searchTraits(physicalOrPersonality, searchTerm);
+    } 
+        else 
+    {
         // Console.WriteLine();
         Console.Clear();
         // Console.WriteLine("\t search again for characteristics. 'physical' or 'personality'");

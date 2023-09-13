@@ -18,6 +18,7 @@ int foodY = 0;
 string[] states = {"('-')", "(^-^)", "(X_X)"};
 string[] foods = {"@@@@@", "$$$$$", "#####"};
 int playerStateIndex = 0;
+int eatenFood = 0;
 
 // Current player string displayed in the Console
 string player = states[0];
@@ -133,7 +134,8 @@ else
 
         if (playerX == foodX || playerY == foodY) 
     {
-
+        player = states[playerStateIndex += 1];
+        Console.WriteLine("touch");
     }
 
     // Draw the player at the new location

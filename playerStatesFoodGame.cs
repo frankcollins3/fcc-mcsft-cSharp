@@ -97,20 +97,54 @@
 
         ConsoleKeyInfo keyInfo = Console.ReadKey(true);
     if (keyInfo.Key == ConsoleKey.UpArrow)
-    {
-        playerY--;
-    }
+    {   
+        switch (beatGame)
+        {
+            case 1:
+                playerY -= 2;
+                break;
+            default:
+                playerY--;
+                break;
+        }
+        }
     else if (keyInfo.Key == ConsoleKey.DownArrow)
     {
-        playerY++;
+        switch (beatGame)
+        {
+            case 1:
+                playerY += 2;
+                break;
+            default:
+                playerY++;
+                break;
+        }
     }
     else if (keyInfo.Key == ConsoleKey.LeftArrow)
     {
-        playerX--;
+        // playerX--;
+        switch (beatGame)
+        {
+            case 1:
+                playerX -= 2;
+                break;
+            default:
+                playerX--;
+                break;
+        }
     }
     else if (keyInfo.Key == ConsoleKey.RightArrow)
     {
-        playerX++;
+        // playerX++;
+        switch (beatGame)
+        {
+            case 1:
+                playerX += 2;
+                break;
+            default:
+                playerX++;
+                break;
+        }
     }
     else if (keyInfo.Key == ConsoleKey.Escape)
     {

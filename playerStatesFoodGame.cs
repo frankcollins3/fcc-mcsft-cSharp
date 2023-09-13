@@ -185,11 +185,9 @@
             } else {
                 beatGame = 0;
                 playerStateIndex = 0;
+                FreezePlayer();
             }
-            
-            // // Update food position to a random location
-            // foodX = random.Next(0, width - player.Length);
-            // foodY = random.Next(0, height - 1);
+                        
             }
 
         }

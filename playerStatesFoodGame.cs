@@ -17,6 +17,7 @@ int foodY = 0;
 // Available player and food strings
 string[] states = {"('-')", "(^-^)", "(X_X)"};
 string[] foods = {"@@@@@", "$$$$$", "#####"};
+int playerStateIndex = 0;
 
 // Current player string displayed in the Console
 string player = states[0];
@@ -40,10 +41,6 @@ while (!shouldExit)
     {
         // Console.WriteLine("The terminal has been resized!");
         shouldExit = true;
-    }
-    else
-    {
-        Console.WriteLine("hey");
     }
     
     previousWidth = Console.WindowWidth;
@@ -77,7 +74,8 @@ void ShowFood()
 // Changes the player to match the food consumed
 void ChangePlayer() 
 {
-    player = states[food + 1];
+    player = states[2];
+    // player = states[food];
     Console.SetCursorPosition(playerX, playerY);
     Console.Write(player);
 }
@@ -86,7 +84,7 @@ void ChangePlayer()
 void FreezePlayer() 
 {
     System.Threading.Thread.Sleep(1000);
-    player = states[0];
+    player = states[playerStateIndex];
 }
 
 // Reads directional input from the Console and moves the player
@@ -132,6 +130,11 @@ else
     // Keep player position within the bounds of the Terminal window
     playerX = (playerX < 0) ? 0 : (playerX >= width ? width : playerX);
     playerY = (playerY < 0) ? 0 : (playerY >= height ? height : playerY);
+
+        if (playerX == foodX || playerY == foodY) 
+    {
+
+    }
 
     // Draw the player at the new location
     Console.SetCursorPosition(playerX, playerY);

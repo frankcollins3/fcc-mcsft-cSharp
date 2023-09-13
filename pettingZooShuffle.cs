@@ -1,102 +1,73 @@
-// this approach seems similar to reassigning pointer links in C
-
 using System;
 
 class Program
 {
-    static void Main()
-    {  
 
-    string[] pettingZoo = 
+static void Main() 
+{
+    
+string[] pettingZoo = 
+{
+    "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
+    "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
+    "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
+};
+
+PlanSchoolVisit("School A");
+PlanSchoolVisit("School B", 3);
+PlanSchoolVisit("School C", 2);
+
+void PlanSchoolVisit(string schoolName, int groups = 6) 
+{
+    RandomizeAnimals(); 
+    string[,] group1 = AssignGroup(groups);
+    Console.WriteLine(schoolName);
+    PrintGroup(group1);
+}
+
+void RandomizeAnimals() 
+{
+    Random random = new Random();
+
+    for (int i = 0; i < pettingZoo.Length; i++) 
     {
-        "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
-        "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
-        "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
-    };
+        int r = random.Next(i, pettingZoo.Length);
 
-
-
-    RandomizeAnimals();
-    // string[,] group = AssignGroup();
-    Console.WriteLine("School A");
-    // PrintGroup(group);
-
-    void RandomizeAnimals() 
-    {
-        Random random = new Random();
-
-        for (int i = 0; i < pettingZoo.Length; i++) 
-        {
-            int r = random.Next(i, pettingZoo.Length);
-
-            string temp = pettingZoo[r];
-            pettingZoo[r] = pettingZoo[i];
-            pettingZoo[i] = temp;
-        }
-    }
-
-    foreach(string animal in pettingZoo) 
-    {
-        Console.WriteLine(animal);
-    }
-
+        string temp = pettingZoo[r];
+        pettingZoo[r] = pettingZoo[i];
+        pettingZoo[i] = temp;
     }
 }
 
+string[,] AssignGroup(int groups = 6) 
+{
+    string[,] result = new string[groups, pettingZoo.Length/groups];
+    int start = 0;
 
-                // initial shuffle
-/*
-    void RandomizeAnimals() 
+    for (int i = 0; i < groups; i++) 
     {
-    // Console.WriteLine("randomize animals");
-    Random random = new Random();
-
-    int i = 0;
-    int r = random.Next(pettingZoo.Length);
-
-    string temp = pettingZoo[i];
-    pettingZoo[i] = pettingZoo[r];
-    pettingZoo[r] = temp;
+        for (int j = 0; j < result.GetLength(1); j++) 
+        {
+            result[i,j] = pettingZoo[start++];
+        }
     }
-*/
 
-                // for loop
-/*
-    void RandomizeAnimals() 
+    return result;
+}
+
+void PrintGroup(string[,] groups) 
+{
+    for (int i = 0; i < groups.GetLength(0); i++) 
     {
-    
-    Random random = new Random();
-
-    for (int i = 0; i < pettingZoo.Length; i++) 
-    {
-        int r = random.Next(pettingZoo.Length);
-
-        string temp = pettingZoo[i];
-        pettingZoo[i] = pettingZoo[r];
-        pettingZoo[r] = temp;
+        Console.Write($"Group {i + 1}: ");
+        for (int j = 0; j < groups.GetLength(1); j++) 
+        {
+            Console.Write($"{groups[i,j]}  ");
+        }
+        Console.WriteLine();
     }
+}
 
-    }
-*/
+}
 
-                // 
-/*
-    void RandomizeAnimals() 
-    {
-    
-    Random random = new Random();
-
-    for (int i = 0; i < pettingZoo.Length; i++) 
-    {        
-        int r = random.Next(i, pettingZoo.Length);      // updated from int r = random.Next(pettingZoo.Length) to improve the distribution of randomly selected elements by updating range as [i}+1
-
-        string temp = pettingZoo[i];
-        pettingZoo[i] = pettingZoo[r];
-        pettingZoo[r] = temp;
-    }
-    Now, as you iterate through the for loop, you update the range of the randomly selected index to exclude values less than i. 
-    This is because indices at values less than i have already been swapped in previous iterations of the loop.
-
-    }
-*/
-
+}

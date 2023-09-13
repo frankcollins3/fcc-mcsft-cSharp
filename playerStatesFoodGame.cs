@@ -74,17 +74,17 @@
     }
 
     // Changes the player to match the food consumed
-    void ChangePlayer() 
-    {
-        player = states[2];
-        // player = states[food];
-        Console.SetCursorPosition(playerX, playerY);
-        Console.Write(player);
-    }
+    // void ChangePlayer() 
+    // {
+    //     player = states[2];
+    //     // player = states[food];
+    //     Console.SetCursorPosition(playerX, playerY);
+    //     Console.Write(player);
+    // }
 
     // Temporarily stops the player from moving
     void FreezePlayer() 
-    {
+    {   
         System.Threading.Thread.Sleep(1000);
         player = states[playerStateIndex];
     }
@@ -142,16 +142,17 @@
             } 
                 else
             {
-            player = states[playerStateIndex += 1];
             foodEats = 0; 
             food = random.Next(0, foods.Length);
             ShowFood();
-            if (beatGame < 3) {
+            if (beatGame < 2) {
                 beatGame += 1;
+                player = states[playerStateIndex += 1];
             } else {
                 beatGame = 0;
                 playerStateIndex = 0;
             }
+            
             // // Update food position to a random location
             // foodX = random.Next(0, width - player.Length);
             // foodY = random.Next(0, height - 1);

@@ -8,22 +8,6 @@ greeting messages
 static void Main()
 {
 
-// double float1 = 3000.0;
-// double float2 = 0.0;
-// int number1 = 3000;
-// int number2 = 0;
-
-// Console.WriteLine(float1 / float2);
-//     try 
-// {
-// Console.WriteLine(number1 / number2);
-// }
-//     catch 
-// {
-// Console.WriteLine("cant catch me off guard yet!");
-// }
-// Console.WriteLine("Exit program");
-
 try
 {
     Process1();
@@ -33,15 +17,14 @@ catch
     Console.WriteLine("An exception has occurred");
 }
 
-Console.WriteLine("Exit program");
 
 static void Process1()
 {
     try {
     WriteMessage();
     }
-    catch {
-    ErrorMessage();
+    catch (Exception ex) {
+    ErrorMessage(ex);
     }
 }
 
@@ -56,9 +39,19 @@ static void WriteMessage()
     Console.WriteLine(number1 / number2);
 }
 
-static void ErrorMessage()
+static void ErrorMessage(Exception err)
 {
-    Console.WriteLine("weve got an error");
+    Console.WriteLine($"weve got an error: {err.Message}");
+
+    Console.WriteLine($"source {err.Source}");  // TestProject (name of file)
+    Console.WriteLine($"TargetSite {err.TargetSite}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+    Console.WriteLine($"Data {err.Data}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+    Console.WriteLine($"HelpLink: \t  {err.HelpLink}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+    Console.WriteLine($"HResult: \t  {err.HResult}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+    Console.WriteLine($"InnerException: \t  {err.InnerException}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+    // Console.WriteLine($"StackTrace: \t  {err.StackTrace}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+
+
 }
 
 
@@ -88,3 +81,13 @@ greeting messages
 
             // errors and exception objects
 //  exception objects caught by your C# application are instances of an exception class
+
+            // properties of an exception class
+// Data: The Data property holds arbitrary data in key-value pairs.
+// HelpLink: The HelpLink property can be used to hold a URL (or URN) to a help file that provides extensive information about the cause of an exception.
+// HResult: The HResult property can be used to access to a coded numerical value that's assigned to a specific exception.
+// InnerException: The InnerException property can be used to create and preserve a series of exceptions during exception handling.
+// Message: The Message property provides details about the cause of an exception.
+// Source: The Source property can be used to access the name of the application or the object that causes the error.
+// StackTrace: The StackTrace property contains a stack trace that can be used to determine where an error occurred.
+// TargetSite: The TargetSite property can be used to get the method that throws the current exception.

@@ -8,51 +8,158 @@ greeting messages
 static void Main()
 {
 
-try
-{
-    Process1();
-}
-catch
-{
-    Console.WriteLine("An exception has occurred");
-}
+// try
+// {
+//     Process1();
+// }
+// catch
+// {
+//     Console.WriteLine("An exception has occurred");
+// }
 
 
-static void Process1()
+// static void Process1()
+// {
+//         try 
+//     {
+//     WriteMessage();
+//     }
+//         catch (DivideByZeroException ex)        // can also catch a specific Exception Type.
+//         // catch (Exception ex) 
+//     {
+//     ErrorMessage(ex);
+//     }
+// }
+
+// static void WriteMessage()
+// {
+//     double float1 = 3000.0;
+//     double float2 = 0.0;
+//     int number1 = 3000;
+//     // int number2 = 0;
+//     byte smallNumber;
+//         try
+//     {
+//     Console.WriteLine(float1 / float2);
+//     }
+//         catch(DivideByZeroException ex)
+//     {
+//         Console.WriteLine($"Heres the exception.Message from Exception Class in the Write Message invocation: \t {ex.Message}");
+//         Console.WriteLine($"Function that created the error: \t {ex.TargetSite}");
+//     }
+//     // Console.WriteLine(number1 / number2);
+//         checked
+//     {
+//         // * * * * * * * *  checked keyword is used to enable or disable overflow checking for arithmetic operations. 
+//         smallNumber = (byte)number1;
+//     }
+// }
+
+// static void ErrorMessage(Exception err)
+// {
+//     Console.WriteLine($"weve got an error: {err.Message}");
+
+//     Console.WriteLine($"source {err.Source}");  // TestProject (name of file)
+//     Console.WriteLine($"TargetSite {err.TargetSite}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
+//     Console.WriteLine($"Data {err.Data}");  
+//     Console.WriteLine($"HelpLink: \t  {err.HelpLink}");  
+//     Console.WriteLine($"HResult: \t  {err.HResult}");  
+//     Console.WriteLine($"InnerException: \t  {err.InnerException}"); 
+//     // Console.WriteLine($"StackTrace: \t  {err.StackTrace}");  
+// }
+
+            // * * * * *  inputValues is used to store numeric values entered by a user
+// string[] inputValues = new string[]{"three", "9999999999", "0", "2" };
+
+// foreach (string inputValue in inputValues)
+// {
+//     int numValue = 0;
+//     try
+//     {
+//         numValue = int.Parse(inputValue);
+//     }
+//     catch (FormatException)
+//     {
+//         Console.WriteLine("Invalid readResult. Please enter a valid number.");
+//     }
+//     catch (OverflowException)
+//     {
+//         Console.WriteLine("The number you entered is too large or too small.");
+//     }
+//     catch(Exception ex)
+//     {
+//         Console.WriteLine(ex.Message);
+//     }
+// }
+
+checked
 {
-    try {
-    WriteMessage();
+        try 
+    {
+    int num1 = int.MaxValue;
+    int num2 = int.MaxValue;
+    int result = num1 + num2;
+    Console.WriteLine("Result: " + result);
+    }   
+        catch(OverflowException ex)
+    {  
+    Console.WriteLine($"Overflow exception: \t * * *{ex.Message}* * *");
     }
-    catch (Exception ex) {
-    ErrorMessage(ex);
+
+
+        try 
+    {
+    string str = null;
+    int length = str.Length;
+    Console.WriteLine("String Length: " + length);
+    }
+        catch(NullReferenceException ex)
+    {
+    Console.WriteLine($"NullReferenceException: \t * * *{ex.Message}* * *");
+    }
+
+        try 
+    {
+    int[] numbers = new int[5];
+
+        try 
+    {
+    numbers[5] = 10;
+    Console.WriteLine("Number at index 5: " + numbers[5]);
+    }
+        catch(IndexOutOfRangeException ex)
+    {
+    Console.WriteLine($"Out of bounds Array: \t * * *{ex.Message} * * *");
+    }
+
+    int num3 = 10;
+    int num4 = 0;
+    int result2 = num3 / num4;
+    Console.WriteLine("Result: " + result2);
+    }
+        catch(DivideByZeroException ex)
+    {
+    Console.WriteLine($"Divide by Zero Exception Error produced! \t {ex.Message}");        
     }
 }
+// catch (OverflowException ex)
+// {
+//     Console.WriteLine("Error: The number is too large to be represented as an integer." + ex.Message);
+// }
+// catch (NullReferenceException ex)
+// {
+//     Console.WriteLine("Error: The reference is null." + ex.Message);
+// }
+// catch (IndexOutOfRangeException ex)
+// {
+//     Console.WriteLine("Error: Index out of range." + ex.Message);
+// }
+// catch (DivideByZeroException ex)
+// {
+//     Console.WriteLine("Error: Cannot divide by zero." + ex.Message);
+// }
 
-static void WriteMessage()
-{
-    double float1 = 3000.0;
-    double float2 = 0.0;
-    int number1 = 3000;
-    int number2 = 0;
-
-    Console.WriteLine(float1 / float2);
-    Console.WriteLine(number1 / number2);
-}
-
-static void ErrorMessage(Exception err)
-{
-    Console.WriteLine($"weve got an error: {err.Message}");
-
-    Console.WriteLine($"source {err.Source}");  // TestProject (name of file)
-    Console.WriteLine($"TargetSite {err.TargetSite}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-    Console.WriteLine($"Data {err.Data}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-    Console.WriteLine($"HelpLink: \t  {err.HelpLink}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-    Console.WriteLine($"HResult: \t  {err.HResult}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-    Console.WriteLine($"InnerException: \t  {err.InnerException}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-    // Console.WriteLine($"StackTrace: \t  {err.StackTrace}");  // Name of method that throws the error:        source Void <Main>g__WriteMessage|0_1()
-
-
-}
+// Console.WriteLine("Exiting program.");
 
 
 }
